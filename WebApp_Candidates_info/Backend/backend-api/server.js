@@ -22,8 +22,8 @@ app.use(cors());
 app.use(express.json());
 
 // Define API endpoint to fetch data from MySQL
-app.get('/api/employees', (req, res) => {
-  connection.query('SELECT * FROM employees', (error, results) => {
+app.get('/api/candidates', (req, res) => {
+  connection.query('SELECT * FROM candidates', (error, results) => {
     if (error) {
       res.status(500).json({ message: error.message });
     } else {
@@ -33,12 +33,12 @@ app.get('/api/employees', (req, res) => {
 });
 
 // Define API endpoint to add data to MySQL
-app.post('/api/employees', (req, res) => {
-  const { first_name, last_name, email, phone, hire_date, job_title, salary, department } = req.body;
+app.post('/api/candidates', (req, res) => {
+  const { name, email, phone, address } = req.body;
 
   // Insert data into the MySQL database
-  connection.query('INSERT INTO employees (first_name, last_name, email, phone, hire_date, job_title, salary, department) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-    [first_name, last_name, email, phone, hire_date, job_title, salary, department],
+  connection.query('INSERT INTO candidates (name, email, phone, address) VALUES (?, ?, ?, ?)',
+    [name, email, phone, address],
     (error, results) => {
       if (error) {
         res.status(500).json({ message: error.message });
@@ -48,8 +48,21 @@ app.post('/api/employees', (req, res) => {
     });
 });
 
+// Define API endpoint to delete data from MySQL
+app.delete('/api/candidates/:id', (req, res) => {
+  const id = req.params.id;
+
+  // Delete record from the MySQL database
+  connection.query('DELETE FROM candidates WHERE id = ?', id, (error, results) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.json({ message: 'Record deleted successfully' });
+    }
+  });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
