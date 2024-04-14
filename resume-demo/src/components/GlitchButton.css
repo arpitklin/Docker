@@ -1,0 +1,62 @@
+.glitch-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  /*background-color: darkred; Default background color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.linkedin-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.glitch-button::before,
+.glitch-button::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-button::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip: rect(0, auto, auto, 0);
+  animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+
+.glitch-button::after {
+  left: -2px;
+  text-shadow: -2px 0 #ff00c1, 2px 2px #ff00c1;
+  clip: rect(0, auto, auto, 0);
+  animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0%, 100% {
+    clip: rect(0, auto, auto, 0);
+  }
+  /* Add more keyframes as needed */
+}
+
+@keyframes glitch-anim-2 {
+  0%, 100% {
+    clip: rect(0, auto, auto, 0);
+  }
+  /* Add more keyframes as needed */
+}

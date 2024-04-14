@@ -1,0 +1,138 @@
+html,
+body,
+h1 {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+#app {
+  background: #000;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.links-container a {
+  display: inline-flex; /* Change to display flex */
+  align-items: center; /* Align items vertically */
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 115px;
+  margin-top:4px;
+}
+
+.links-container a:hover {
+  color: #0056b3; /* Change to the desired color on hover */
+}
+
+.links-container .icon {
+  margin-right: -2px;
+  vertical-align: middle;
+  margin-top:-1px;
+  color: indianred;
+}
+
+.link-text {
+ margin-left: 5px;
+}
+
+#wrapper {
+  text-align: center;
+  width: fit-content;
+}
+
+.sub {
+  color: #ff4a54;
+  letter-spacing: 1em;
+}
+
+.sub {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 95px; /* Adjust as needed */
+  margin-top:20px;
+}
+
+.glitch {
+  position: relative;
+  color: #fff;
+  font-size: 4em;
+  letter-spacing: 0.5em;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 indianred;
+  clip: rect(44px, 950px, 56px, 0); /* Adjusted width to cover entire text */
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 indianred, 2px 2px indianred;
+  clip: rect(44px, 950px, 56px, 0); /* Adjusted width to cover entire text */
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(54px, 950px, 56px, 0);
+    transform: skew(5deg);
+  }
+  20% {
+    clip: rect(14px, 950px, 92px, 0);
+    transform: skew(-10deg);
+  }
+  /* Add more keyframes as needed */
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(15px, 950px, 23px, 0);
+    transform: skew(-15deg);
+  }
+  20% {
+    clip: rect(40px, 950px, 78px, 0);
+    transform: skew(10deg);
+  }
+  /* Add more keyframes as needed */
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(2deg);
+  }
+  50% {
+    transform: skew(-3deg);
+  }
+  100% {
+    transform: skew(2deg);
+  }
+}
+
